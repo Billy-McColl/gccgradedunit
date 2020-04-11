@@ -5,7 +5,9 @@
 	"main": "app.js",
 	"scripts": {
 		"start": "node server",
-		"server": " nodemon app"
+		"server": " nodemon app",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"author": "William McColl",
 	"license": "ISC",
@@ -17,7 +19,9 @@
 		"gravatar": "^1.8.0",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.9.3",
-		"request": "^2.88.2"
+		"redux-devtools-extension": "^2.13.8",
+		"request": "^2.88.2",
+		"uuid": "^7.0.3"
 	},
 	"devDependencies": {
 		"concurrently": "^5.1.0",

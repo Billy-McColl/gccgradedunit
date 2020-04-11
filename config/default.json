@@ -1,0 +1,6 @@
+{
+	"mongoURI": "mongodb+srv://admin:admin@graded-unit-e0tc1.mongodb.net/graded-unit?retryWrites=true&w=majority",
+	"jwtSecret": "mysecrettoken",
+	"githubClientId": "682d0e680e0ee6764034",
+	"githubSecret": "a1b4ab0f97c5e1cc0b9495edb5d41922a57d0795"
+}

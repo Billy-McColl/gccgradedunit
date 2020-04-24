@@ -7,10 +7,13 @@
         "githubusername",
         "gravatar",
         "inital",
+        "linkedin",
         "redux",
+        "repos",
         "saftey",
         "state",
         "upsert",
-        "your"
+        "your",
+        "youtube"
     ]
 }

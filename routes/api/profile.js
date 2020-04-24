@@ -18,7 +18,7 @@ router.get('/me', auth, async (req, res) => {
 		// find one user profile with the user id then populate
 		// the profile variable with user name and avatar.
 		const profile = await Profile.findOne({
-			user: req.user.id
+			user: req.user.id,
 		}).populate('user', ['name', 'avatar']);
 
 		// check for a profile and if none is found
@@ -48,13 +48,9 @@ router.post(
 		auth,
 		[
 			// check the user as filled in the stats input and the skills inputs
-			check('status', 'Status is required')
-				.not()
-				.isEmpty(),
-			check('skills', 'Skills is required')
-				.not()
-				.isEmpty()
-		]
+			check('status', 'Status is required').not().isEmpty(),
+			check('skills', 'Skills is required').not().isEmpty(),
+		],
 	],
 	async (req, res) => {
 		// run validation checks
@@ -77,7 +73,7 @@ router.post(
 			facebook,
 			twitter,
 			instagram,
-			linkedin
+			linkedin,
 		} = req.body;
 
 		// Build profile object
@@ -92,9 +88,9 @@ router.post(
 		if (status) profileFields.status = status;
 		if (githubusername) profileFields.githubusername = githubusername;
 		if (skills) {
-			profileFields.skills = skills
-				.split(',')
-				.map((skill) => skill.trim());
+			profileFields.skills = Array.isArray(skills)
+				? skills
+				: skills.split(',').map((skill) => ' ' + skill.trim());
 		}
 
 		// Build social object
@@ -135,7 +131,7 @@ router.get('/', async (req, res) => {
 		// with the user, name, avatar info.
 		const profiles = await Profile.find().populate('user', [
 			'name',
-			'avatar'
+			'avatar',
 		]);
 
 		// return profiles found
@@ -154,7 +150,7 @@ router.get('/user/:user_id', async (req, res) => {
 	try {
 		// find one profile by the id
 		const profile = await Profile.findOne({
-			user: req.params.user_id
+			user: req.params.user_id,
 		}).populate('user', ['name', 'avatar']);
 
 		// check for a profile and if no profile is found return 400 bad request message.
@@ -205,16 +201,10 @@ router.put(
 		[
 			// updating the user experience section of the profile by getting
 			// the title, company they worked for & from date.
-			check('title', 'Title is required')
-				.not()
-				.isEmpty(),
-			check('company', 'Company is required')
-				.not()
-				.isEmpty(),
-			check('from', 'From date is required')
-				.not()
-				.isEmpty()
-		]
+			check('title', 'Title is required').not().isEmpty(),
+			check('company', 'Company is required').not().isEmpty(),
+			check('from', 'From date is required').not().isEmpty(),
+		],
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -230,7 +220,7 @@ router.put(
 			from,
 			to,
 			current,
-			description
+			description,
 		} = req.body;
 
 		// store the users new experience before we update the database
@@ -241,7 +231,7 @@ router.put(
 			from,
 			to,
 			current,
-			description
+			description,
 		};
 
 		try {
@@ -295,19 +285,11 @@ router.put(
 		auth,
 		[
 			// check that all below fields have been filled in correctly
-			check('school', 'School is required')
-				.not()
-				.isEmpty(),
-			check('degree', 'Degree is required')
-				.not()
-				.isEmpty(),
-			check('fieldofstudy', 'Field of study is required')
-				.not()
-				.isEmpty(),
-			check('from', 'From date is required')
-				.not()
-				.isEmpty()
-		]
+			check('school', 'School is required').not().isEmpty(),
+			check('degree', 'Degree is required').not().isEmpty(),
+			check('fieldofstudy', 'Field of study is required').not().isEmpty(),
+			check('from', 'From date is required').not().isEmpty(),
+		],
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -323,7 +305,7 @@ router.put(
 			from,
 			to,
 			current,
-			description
+			description,
 		} = req.body;
 
 		// save new updated education to the newEdu variable.
@@ -334,7 +316,7 @@ router.put(
 			from,
 			to,
 			current,
-			description
+			description,
 		};
 
 		try {
@@ -387,7 +369,7 @@ router.get('/github/:username', (req, res) => {
 				'githubClientId'
 			)}&client_secret=${config.get('githubSecret')}`,
 			method: 'GET',
-			headers: { 'user-agent': 'node.js' }
+			headers: { 'user-agent': 'node.js' },
 		};
 
 		request(options, (error, response, body) => {

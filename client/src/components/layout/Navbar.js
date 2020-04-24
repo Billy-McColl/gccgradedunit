@@ -6,9 +6,18 @@ import { logout } from '../../actions/auth';
 
 const Navbar = ({ auth: { isAuthenticated }, loading, logout }) => {
 	const authLinks = (
-		<ul>
+		<ul className='web-links'>
 			<li>
-				<Link to='/onlinesafety'>Online Help</Link>
+				<Link to='/onlinesafety'>
+					<i className='fas fa-info-circle'></i>{' '}
+					<span className='hide-sm'>Online Help</span>
+				</Link>
+			</li>
+			<li>
+				<Link to='/dashboard'>
+					<i className='fas fa-user'></i>{' '}
+					<span className='hide-sm'>Dashboard</span>
+				</Link>
 			</li>
 			<li>
 				<a onClick={logout} href='#!'>
@@ -37,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated }, loading, logout }) => {
 		<nav className='navbar'>
 			<h1>
 				<Link to='/'>
-					<i className='fas fa-user-shield'></i> YourSafety
+					<i className='fas fa-user-shield'></i>
 				</Link>
 			</h1>
 

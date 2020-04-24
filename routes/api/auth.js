@@ -33,7 +33,7 @@ router.post(
 	[
 		// email & password validation check to make sure the user as filled out the form correctly
 		check('email', 'Please include a valid email').isEmail(),
-		check('password', 'Password is required').exists()
+		check('password', 'Password is required').exists(),
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -72,15 +72,15 @@ router.post(
 			// get the user payload (payload means data).
 			const payload = {
 				user: {
-					id: user.id
-				}
+					id: user.id,
+				},
 			};
 
 			// once loged in we will check the secret within the web token and then set it to expire
 			jwt.sign(
 				payload,
 				config.get('jwtSecret'),
-				{ expiresIn: 360000 },
+				{ expiresIn: 36000 },
 				(err, token) => {
 					if (err) throw err;
 					res.json({ token });

@@ -33,7 +33,6 @@ const CreateProfile = ({
 		location,
 		status,
 		skills,
-		githubusername,
 		bio,
 		twitter,
 		facebook,
@@ -76,12 +75,8 @@ const CreateProfile = ({
 							Senior Developer
 						</option>
 						<option value='Manager'>Manager</option>
-						<option value='Student or Learning'>
-							Student or Learning
-						</option>
-						<option value='Instructor'>
-							Instructor or Teacher
-						</option>
+						<option value='Student'>Student</option>
+						<option value='Teacher'>Teacher</option>
 						<option value='Intern'>Intern</option>
 						<option value='Other'>Other</option>
 					</select>
@@ -122,7 +117,7 @@ const CreateProfile = ({
 						onChange={onChange}
 					/>
 					<small className='form-text'>
-						City & state suggested (eg. Boston, MA)
+						City & Country suggested (eg. Glasgow, UK)
 					</small>
 				</div>
 				<div className='form-group'>
@@ -138,19 +133,7 @@ const CreateProfile = ({
 						HTML,CSS,JavaScript,PHP)
 					</small>
 				</div>
-				<div className='form-group'>
-					<input
-						type='text'
-						placeholder='Github Username'
-						name='githubusername'
-						value={githubusername}
-						onChange={onChange}
-					/>
-					<small className='form-text'>
-						If you want your latest repos and a Github link, include
-						your username
-					</small>
-				</div>
+
 				<div className='form-group'>
 					<textarea
 						placeholder='A short bio of yourself'

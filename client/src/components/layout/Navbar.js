@@ -58,7 +58,7 @@ const Navbar = ({ auth: { isAuthenticated }, loading, logout }) => {
 		<nav className='navbar'>
 			<h1>
 				<Link to='/'>
-					<i className='fas fa-user-shield'></i>
+					<i className='fas fa-user-shield'></i> YourSaftey
 				</Link>
 			</h1>
 

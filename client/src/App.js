@@ -23,7 +23,6 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
-// import './bootstrap.css';
 import './App.css';
 // import { addEducation } from './actions/profile';
 

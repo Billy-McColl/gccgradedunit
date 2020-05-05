@@ -404,6 +404,10 @@ button {
 	text-align: center;
 }
 
+.profile img {
+	width: 50%;
+}
+
 .profile-top img {
 	width: 250px;
 }

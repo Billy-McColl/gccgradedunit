@@ -1,3 +1,5 @@
+// all of my user actions types where we can interact
+//with the user and sent conformations or erros depending on the actions of the user
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';

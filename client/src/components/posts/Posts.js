@@ -12,6 +12,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 		getPosts();
 	}, [getPosts]);
 
+	// if posts are loading show the spinner else show the posts
 	return loading ? (
 		<Spinner />
 	) : (
@@ -21,6 +22,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 				<i className='fas fa-user' /> Welcome to the community
 			</p>
 			<PostForm />
+			{/* map through each post and find post by id and post and load the post */}
 			<div className='posts'>
 				{posts.map((post) => (
 					<PostItem key={post._id} post={post} />

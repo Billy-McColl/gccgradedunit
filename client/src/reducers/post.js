@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
 			};
 		case GET_POST:
 			return {
-				//
+				// single post
 				...state,
 				post: payload,
 				loading: false,
@@ -54,6 +54,8 @@ export default function (state = initialState, action) {
 				loading: false,
 			};
 		case UPDATE_LIKES:
+			// return state with current state and map through the posts and for each post
+			// equals the post id with payload id and if it matches return post and update the likes
 			return {
 				...state,
 				posts: state.posts.map((post) =>

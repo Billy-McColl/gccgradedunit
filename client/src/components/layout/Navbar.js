@@ -21,7 +21,7 @@ const Navbar = ({ auth: { isAuthenticated }, loading, logout }) => {
 			</li>
 			<li>
 				<Link to='/profiles'>
-					<i class='fas fa-address-card'></i>{' '}
+					<i className='fas fa-address-card'></i>{' '}
 					<span className='hide-sm'>Users Profiles</span>
 				</Link>
 			</li>

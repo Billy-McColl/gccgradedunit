@@ -16,16 +16,14 @@ router.post(
 	'/',
 	[
 		// check the the name input fields has been correctly filled in and is not empty
-		check('name', 'Name is required')
-			.not()
-			.isEmpty(),
+		check('name', 'Name is required').not().isEmpty(),
 		// check the the email input fields has been correctly filled in and is not empty
 		check('email', 'Please include a valid email').isEmail(),
 		//// check the the password input fields has been correctly filled in and is not empty
 		check(
 			'password',
 			'Please enter a password with 6 or more characters'
-		).isLength({ min: 6 })
+		).isLength({ min: 6 }),
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -52,14 +50,14 @@ router.post(
 			const avatar = gravatar.url(email, {
 				s: '200',
 				r: 'pg',
-				d: 'mm'
+				d: 'mm',
 			});
 
 			user = new User({
 				name,
 				email,
 				avatar,
-				password
+				password,
 			});
 
 			// start to salt the password for password hashing
@@ -72,15 +70,15 @@ router.post(
 
 			const payload = {
 				user: {
-					id: user.id
-				}
+					id: user.id,
+				},
 			};
 
 			// json web token secret that is inside of my config folder and expiration of the token itself
 			jwt.sign(
 				payload,
 				config.get('jwtSecret'),
-				{ expiresIn: 3600000000 },
+				{ expiresIn: 3600 },
 				(err, token) => {
 					if (err) throw err;
 					res.json({ token });
